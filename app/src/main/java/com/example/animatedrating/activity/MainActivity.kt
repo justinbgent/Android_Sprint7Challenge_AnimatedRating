@@ -1,7 +1,8 @@
-package com.example.animatedrating
+package com.example.animatedrating.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.animatedrating.R
 
 class MainActivity : AppCompatActivity() {
 
