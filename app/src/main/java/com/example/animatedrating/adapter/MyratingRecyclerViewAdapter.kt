@@ -1,22 +1,17 @@
 package com.example.animatedrating.adapter
 
-import android.media.Rating
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import com.example.animatedrating.R
-
-
 import com.example.animatedrating.fragment.RatingsListFragment.OnListFragmentInteractionListener
-import com.example.animatedrating.fragment.dummy.DummyContent.DummyItem
-
+import com.example.animatedrating.model.Rating
 import kotlinx.android.synthetic.main.fragment_ratings.view.*
 
 
 class MyratingRecyclerViewAdapter(
-    private val mValues: List<Rating>,
+    private val ratingItem: MutableList<Rating>,
     private val listener: OnListFragmentInteractionListener?
 ) : RecyclerView.Adapter<MyratingRecyclerViewAdapter.ViewHolder>() {
 
@@ -28,24 +23,15 @@ class MyratingRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = mValues[position]
-        holder.mIdView.text = item.id
-        holder.mContentView.text = item.content
-
-        with(holder.mView) {
-            tag = item
-            setOnClickListener(mOnClickListener)
-        }
+        val item = ratingItem[position]
+        holder.name.text = item.name
+        holder.ratingNum.text = item.rating.toString()
     }
 
-    override fun getItemCount(): Int = mValues.size
+    override fun getItemCount(): Int = ratingItem.size
 
-    inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        val mIdView: TextView = mView.item_number
-        val mContentView: TextView = mView.content
-
-        override fun toString(): String {
-            return super.toString() + " '" + mContentView.text + "'"
-        }
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val name = view.name_text
+        val ratingNum = view.rating_text
     }
 }

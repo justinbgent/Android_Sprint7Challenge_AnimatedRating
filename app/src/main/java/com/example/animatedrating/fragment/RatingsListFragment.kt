@@ -10,11 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.animatedrating.R
 import com.example.animatedrating.adapter.MyratingRecyclerViewAdapter
-
-import com.example.animatedrating.fragment.dummy.DummyContent
-import com.example.animatedrating.fragment.dummy.DummyContent.DummyItem
 import com.example.animatedrating.model.Rating
-import com.example.animatedrating.model.Rating.Companion.STRING_KEY
 import com.example.animatedrating.model.Rating.Companion.ratingsArray
 import kotlinx.android.synthetic.main.fragment_ratings_list.*
 

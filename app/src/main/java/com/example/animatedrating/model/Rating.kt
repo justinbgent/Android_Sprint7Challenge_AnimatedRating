@@ -1,8 +1,7 @@
 package com.example.animatedrating.model
 
-import java.io.Serializable
 
-class Rating(var name: String,var rating: Int): Serializable{
+class Rating(var name: String,var rating: Int){
 
     companion object{
         const val STRING_KEY = "THE_KEY"
