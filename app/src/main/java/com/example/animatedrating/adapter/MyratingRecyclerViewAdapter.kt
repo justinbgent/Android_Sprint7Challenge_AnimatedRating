@@ -8,10 +8,10 @@ import android.widget.TextView
 import com.example.animatedrating.R
 
 
-import com.example.animatedrating.fragment.ratingFragment.OnListFragmentInteractionListener
+import com.example.animatedrating.fragment.RatingsFragment.OnListFragmentInteractionListener
 import com.example.animatedrating.fragment.dummy.DummyContent.DummyItem
 
-import kotlinx.android.synthetic.main.fragment_rating.view.*
+import kotlinx.android.synthetic.main.fragment_ratings.view.*
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
@@ -36,7 +36,7 @@ class MyratingRecyclerViewAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.fragment_rating, parent, false)
+            .inflate(R.layout.fragment_ratings, parent, false)
         return ViewHolder(view)
     }
 
