@@ -6,13 +6,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.animatedrating.R
+import com.example.animatedrating.adapter.MyratingRecyclerViewAdapter
 
 import com.example.animatedrating.fragment.dummy.DummyContent
 import com.example.animatedrating.fragment.dummy.DummyContent.DummyItem
+import com.example.animatedrating.model.Rating
+import com.example.animatedrating.model.Rating.Companion.STRING_KEY
+import com.example.animatedrating.model.Rating.Companion.ratingsArray
+import kotlinx.android.synthetic.main.fragment_ratings_list.*
 
-class RatingsFragment : Fragment() {
-
+class RatingsListFragment : Fragment() {
 
     private var listener: OnListFragmentInteractionListener? = null
 
@@ -21,6 +27,16 @@ class RatingsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_ratings_list, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        list.setHasFixedSize(true)
+        val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        list.layoutManager = layoutManager
+        val dataListAdapter = MyratingRecyclerViewAdapter(ratingsArray, listener)
+        list.adapter = dataListAdapter
     }
 
     override fun onAttach(context: Context) {
@@ -39,6 +55,6 @@ class RatingsFragment : Fragment() {
 
     interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: DummyItem?)
+        fun onListFragmentInteraction(rating: Rating)
     }
 }
