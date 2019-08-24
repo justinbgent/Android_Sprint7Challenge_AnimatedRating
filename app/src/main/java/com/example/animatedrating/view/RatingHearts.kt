@@ -7,7 +7,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import com.example.animatedrating.R
-import com.example.animatedrating.model.Rating.Companion.heartsToFill
 import com.example.animatedrating.model.Rating.Companion.startRatingValue
 import com.example.animatedrating.model.Rating.Companion.theRating
 import com.example.animatedrating.model.Rating.Companion.vectorIsClicked
@@ -53,15 +52,14 @@ class RatingHearts(context: Context, attributeSet: AttributeSet) :
 
         }
 
-//        fun heartsIWillFill(int: Int, heart: MutableList<Int>){
-//            for (i in 0 until heart.size) {
-//                if (int > i){
-//                    animateFill(findViewById(heart[i]))
-//                }else{
-//                    animateEmpty(findViewById(heart[i]))
-//                }
-//            }
-//        }
+        fun heartsToAnimate(rating: Int){
+            for (x in 0 until rating) {
+                animateFill(findViewById(x + 1))
+            }
+            for (x in 0 until (maxRating - rating)) {
+                animateEmpty(findViewById(maxRating-x))
+            }
+        }
 
         //So user doesn't have to select a rating if they like the start rating.
         // Will default to start Rating.
@@ -73,7 +71,6 @@ class RatingHearts(context: Context, attributeSet: AttributeSet) :
             image.layoutParams = imageLayoutParam
             image.scaleType = ImageView.ScaleType.CENTER
             image.id = i
-            heartsToFill.add(image.id)
 
             if(startRating >= i){
                 setBorderOrFill(image, false)
@@ -84,14 +81,7 @@ class RatingHearts(context: Context, attributeSet: AttributeSet) :
             image.setOnClickListener {
                 vectorIsClicked = true
                 theRating = rating
-
-                for (x in 0 until heartsToFill.size) {
-                    if (rating > x){
-                        animateFill(findViewById(heartsToFill[x]))
-                    }else{
-                        animateEmpty(findViewById(heartsToFill[x]))
-                    }
-                }
+                heartsToAnimate(rating)
             }
             addView(image)
         }

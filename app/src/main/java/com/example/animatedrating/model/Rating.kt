@@ -9,7 +9,6 @@ class Rating(var name: String,var rating: Int){
         var vectorIsClicked = false
         var theRating = 0
         var startRatingValue = 0
-        val heartsToFill = mutableListOf<Int>()
         var ratingsArray = mutableListOf<Rating>()
     }
 }
