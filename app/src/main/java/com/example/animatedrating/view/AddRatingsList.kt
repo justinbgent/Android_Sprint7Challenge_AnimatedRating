@@ -2,63 +2,86 @@ package com.example.animatedrating.view
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.util.AttributeSet
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
-import androidx.core.content.ContextCompat.startActivity
+import androidx.core.content.ContextCompat
 import com.example.animatedrating.R
-import com.example.animatedrating.activity.RateActivity
+import com.example.animatedrating.activity.MainActivity
 
-class AddRatingsList(context: Context, attributeSet: AttributeSet): ConstraintLayout(context, attributeSet) {
+class AddRatingsList(context: Context, attributeSet: AttributeSet) :
+    LinearLayout(context, attributeSet) {
 
-
-//    <fragment
-//    android:layout_width="match_parent"
-//    android:layout_height="wrap_content"
-//    android:layout_margin="4dp"
-//    app:layout_constraintEnd_toEndOf="parent"
-//    app:layout_constraintStart_toStartOf="parent"
-//    app:layout_constraintTop_toTopOf="parent">
-//
-//    </fragment>
-//
-//    <Button
-//    android:id="@+id/button"
-//    android:layout_width="match_parent"
-//    android:layout_height="wrap_content"
-//    android:layout_margin="4dp"
-//    android:text="Hello World!"
-//    app:layout_constraintBottom_toBottomOf="parent"
-//    app:layout_constraintLeft_toLeftOf="parent"
-//    app:layout_constraintRight_toRightOf="parent" />
-
+    //        <ImageView
+//        android:id="@+id/image_view1"
+//        android:layout_margin="4dp"
+//        android:layout_width="30dp"
+//        android:layout_height="25dp"
+//        android:scaleType="fitCenter"
+//        app:layout_constraintTop_toTopOf="parent"
+//        app:layout_constraintLeft_toRightOf="@+id/rating_text_view"/>
     init {
         val typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.AddRatingsList)
         val textSize = typedArray.getDimension(R.styleable.AddRatingsList_textSize, 16f)
         typedArray.recycle()
-        val layoutParam = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-        val addRatingBtn = Button(context)
-        val constraintSet = ConstraintSet()
+        val layoutParam = LinearLayout.LayoutParams(70, 70)
 
-        addRatingBtn.text = "Add Rating"
-        addRatingBtn.layoutParams = layoutParam
-        addRatingBtn.textSize = textSize
 
-        constraintSet.connect(addRatingBtn.id, ConstraintSet.TOP, this.id, ConstraintSet.TOP)
-        constraintSet.connect(addRatingBtn.id, ConstraintSet.LEFT, this.id, ConstraintSet.LEFT)
-        constraintSet.connect(addRatingBtn.id, ConstraintSet.RIGHT, this.id, ConstraintSet.RIGHT)
-        constraintSet.connect(addRatingBtn.id, ConstraintSet.BOTTOM, this.id, ConstraintSet.BOTTOM)
+        val imageView1 = ImageView(context)
+        val imageView2 = ImageView(context)
+        val imageView3 = ImageView(context)
+        val imageView4 = ImageView(context)
+        val imageView5 = ImageView(context)
+        val btn = Button(context)
 
-        addRatingBtn.setOnClickListener {
-            val intent = Intent(context, RateActivity::class.java)
-            val bundle: Bundle? = null
-            startActivity(context, intent, bundle)
+        btn.text = "Rate"
+
+
+        imageView1.layoutParams = layoutParam
+        imageView2.layoutParams = layoutParam
+        imageView3.layoutParams = layoutParam
+        imageView4.layoutParams = layoutParam
+        imageView5.layoutParams = layoutParam
+
+
+
+        imageView1.setOnClickListener {
+
         }
-        addView(addRatingBtn)
 
+        imageView2.setOnClickListener {
+
+        }
+
+        imageView3.setOnClickListener {
+
+        }
+
+        imageView4.setOnClickListener {
+
+        }
+
+        imageView5.setOnClickListener {
+
+        }
+
+        btn.setOnClickListener {
+            var intent = Intent(context, MainActivity::class.java)
+            context.startActivity(intent)
+        }
+
+        imageView1.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.avd_heart_empty))
+        addView(imageView1)
+        imageView2.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.avd_heart_empty))
+        addView(imageView2)
+        imageView3.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.avd_heart_empty))
+        addView(imageView3)
+        imageView4.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.avd_heart_empty))
+        addView(imageView4)
+        imageView5.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.avd_heart_empty))
+        addView(imageView5)
+
+        addView(btn)
     }
-
 }

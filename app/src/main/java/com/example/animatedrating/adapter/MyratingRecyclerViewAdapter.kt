@@ -26,6 +26,8 @@ class MyratingRecyclerViewAdapter(
         val item = ratingItem[position]
         holder.name.text = item.name
         holder.ratingNum.text = item.rating.toString()
+
+
     }
 
     override fun getItemCount(): Int = ratingItem.size
