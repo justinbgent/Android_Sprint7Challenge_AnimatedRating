@@ -9,6 +9,7 @@ import com.example.animatedrating.model.Rating
 import com.example.animatedrating.model.Rating.Companion.RATING_KEY
 import com.example.animatedrating.model.Rating.Companion.STRING_KEY
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.rate_activity.*
 
 class MainActivity : AppCompatActivity(), RatingsListFragment.OnListFragmentInteractionListener {
 
@@ -30,6 +31,8 @@ class MainActivity : AppCompatActivity(), RatingsListFragment.OnListFragmentInte
             val intent = Intent(this, RateActivity::class.java)
             startActivity(intent)
         }
+
+
 
 
 //        supportFragmentManager.beginTransaction()
