@@ -6,10 +6,8 @@ import android.os.Bundle
 import com.example.animatedrating.R
 import com.example.animatedrating.fragment.RatingsListFragment
 import com.example.animatedrating.model.Rating
-import com.example.animatedrating.model.Rating.Companion.RATING_KEY
 import com.example.animatedrating.model.Rating.Companion.STRING_KEY
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.rate_activity.*
 
 class MainActivity : AppCompatActivity(), RatingsListFragment.OnListFragmentInteractionListener {
 

@@ -19,7 +19,8 @@
             android:layout_height="match_parent">
 
             <com.example.animatedrating.view.RatingHearts
-                app:maxRating="7"
+                app:maxRating="5"
+                app:startRating="3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"

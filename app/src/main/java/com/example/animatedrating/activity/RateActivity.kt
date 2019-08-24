@@ -8,7 +8,9 @@ import com.example.animatedrating.R
 import com.example.animatedrating.model.Rating
 import com.example.animatedrating.model.Rating.Companion.STRING_KEY
 import com.example.animatedrating.model.Rating.Companion.ratingsArray
-import com.example.animatedrating.view.RatingHearts.Companion.theRating
+import com.example.animatedrating.model.Rating.Companion.startRatingValue
+import com.example.animatedrating.model.Rating.Companion.theRating
+import com.example.animatedrating.model.Rating.Companion.vectorIsClicked
 import kotlinx.android.synthetic.main.rate_activity.*
 
 class RateActivity : AppCompatActivity() {
@@ -18,12 +20,19 @@ class RateActivity : AppCompatActivity() {
         setContentView(R.layout.rate_activity)
 
         btn_save_rate.setOnClickListener {
-            if (theRating != 0) {
                 val name = intent.getStringExtra(STRING_KEY)
-                ratingsArray.add(Rating(name, theRating))
+
+                var ratingToAdd: Int
+                if (vectorIsClicked){
+                    ratingToAdd = theRating
+                    vectorIsClicked = false
+                }else{
+                    ratingToAdd = startRatingValue
+                }
+
+                ratingsArray.add(Rating(name, ratingToAdd))
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
-            }
         }
     }
 

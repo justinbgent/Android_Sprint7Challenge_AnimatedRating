@@ -8,14 +8,13 @@ import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import com.example.animatedrating.R
 import com.example.animatedrating.model.Rating.Companion.heartsToFill
+import com.example.animatedrating.model.Rating.Companion.startRatingValue
+import com.example.animatedrating.model.Rating.Companion.theRating
+import com.example.animatedrating.model.Rating.Companion.vectorIsClicked
 
 
 class RatingHearts(context: Context, attributeSet: AttributeSet) :
     LinearLayout(context, attributeSet) {
-
-    companion object{
-        var theRating = 0
-    }
 
     init {
         val typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.RatingHearts)
@@ -45,32 +44,54 @@ class RatingHearts(context: Context, attributeSet: AttributeSet) :
             animateVector(R.drawable.avd_heart_empty, image)
         }
 
-        fun setBorder(image: ImageView){
-            image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.outline_favorite_border_black_18dp))
-        }
-
-        fun heartsIWillFill(int: Int, heart: MutableList<Int>){
-            for (i in 0 until heart.size) {
-                if (int > i){
-                    animateFill(findViewById(heart[i]))
-                }else{
-                    animateEmpty(findViewById(heart[i]))
-                }
+        fun setBorderOrFill(image: ImageView, falseToFill: Boolean){
+            if (falseToFill){
+                image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.outline_favorite_border_black_18dp))
+            }else{
+                image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.filled_favorite_black_18dp))
             }
+
         }
 
+//        fun heartsIWillFill(int: Int, heart: MutableList<Int>){
+//            for (i in 0 until heart.size) {
+//                if (int > i){
+//                    animateFill(findViewById(heart[i]))
+//                }else{
+//                    animateEmpty(findViewById(heart[i]))
+//                }
+//            }
+//        }
+
+        //So user doesn't have to select a rating if they like the start rating.
+        // Will default to start Rating.
+        startRatingValue = startRating
 
         for (i in 1..maxRating){
             val image = ImageView(context)
             val rating = i
             image.layoutParams = imageLayoutParam
             image.scaleType = ImageView.ScaleType.CENTER
-            setBorder(image)
             image.id = i
             heartsToFill.add(image.id)
+
+            if(startRating >= i){
+                setBorderOrFill(image, false)
+            }else{
+                setBorderOrFill(image, true)
+            }
+
             image.setOnClickListener {
+                vectorIsClicked = true
                 theRating = rating
-                heartsIWillFill(rating, heartsToFill)
+
+                for (x in 0 until heartsToFill.size) {
+                    if (rating > x){
+                        animateFill(findViewById(heartsToFill[x]))
+                    }else{
+                        animateEmpty(findViewById(heartsToFill[x]))
+                    }
+                }
             }
             addView(image)
         }
