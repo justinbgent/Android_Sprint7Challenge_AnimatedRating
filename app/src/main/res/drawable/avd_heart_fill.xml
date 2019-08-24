@@ -58,7 +58,7 @@
             <set>
                 <objectAnimator
                     android:propertyName="pathData"
-                    android:startOffset="625"
+                    android:startOffset="100"
                     android:duration="655"
                     android:valueFrom="M 18 26 C 18 26 21 28 24 28 C 27 28 29 25 32 25 C 35 25 38 26 38 26 L 38 38 L 18 38 L 18 26 Z"
                     android:valueTo="M 18 18 C 18 18 24 18 24 18 C 24 18 32 18 32 18 C 32 18 38 18 38 18 L 38 38 L 18 38 L 18 18 Z"

@@ -21,7 +21,7 @@ class AddRatingsList(context: Context, attributeSet: AttributeSet) :
         val typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.AddRatingsList)
         val textSize = typedArray.getDimension(R.styleable.AddRatingsList_textSize, 16f)
         typedArray.recycle()
-        val layoutParam = LinearLayout.LayoutParams(70, 70)
+        val layoutParam = LayoutParams(70, 70)
 
 
         val imageView1 = ImageView(context)

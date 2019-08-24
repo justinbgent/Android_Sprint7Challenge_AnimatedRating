@@ -19,6 +19,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
+        android:id="@+id/edit_text"
         app:layout_constraintBottom_toTopOf="@+id/btn_rate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

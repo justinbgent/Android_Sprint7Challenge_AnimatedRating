@@ -13,12 +13,14 @@ import kotlinx.android.synthetic.main.rate_activity.*
 
 class MainActivity : AppCompatActivity(), RatingsListFragment.OnListFragmentInteractionListener {
 
+    var name = ""
+
     override fun onListFragmentInteraction(rating: Rating){
 
         val intent = Intent(this, RateActivity::class.java)
 
-        intent.putExtra(STRING_KEY, rating.name)
-        intent.putExtra(RATING_KEY, rating.rating)
+//        intent.putExtra(STRING_KEY, rating.name)
+//        intent.putExtra(RATING_KEY, rating.rating)
 
         startActivity(intent)
     }
@@ -29,7 +31,10 @@ class MainActivity : AppCompatActivity(), RatingsListFragment.OnListFragmentInte
 
         btn_rate.setOnClickListener {
             val intent = Intent(this, RateActivity::class.java)
+            name = edit_text.text.toString()
+            intent.putExtra(STRING_KEY, name)
             startActivity(intent)
+
         }
 
 
