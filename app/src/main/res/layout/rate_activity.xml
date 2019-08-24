@@ -7,7 +7,7 @@
     tools:context=".activity.RateActivity">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="220dp"
+        android:layout_width="match_parent"
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,7 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.example.animatedrating.view.AddRatingsList
+            <com.example.animatedrating.view.RatingHearts
+                app:maxRating="7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
