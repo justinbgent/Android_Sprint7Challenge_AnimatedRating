@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RatingHearts">
+        <attr name="view_weight" format="float"/>
+        <attr name="view_width" format="integer"/>
+        <attr name="view_height" format="integer"/>
+        <attr name="startRating" format="integer"/>
+        <attr name="maxRating" format="integer"/>
+    </declare-styleable>
+</resources>
